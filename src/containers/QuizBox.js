@@ -1,4 +1,4 @@
-import React, {useState, useEffect, Fragment} from 'react';
+import React, {useState, useEffect} from 'react';
 import Question from '../components/Question'
 import Answer from '../components/Answer';
 
@@ -38,7 +38,6 @@ const QuizBox = () => {
     const addToIncorrectScore = () => {
         setIncorrectScore(incorrectScore+1)
     }
-
 
     const nextQuestionClick = () => { 
         getQuestionData()
