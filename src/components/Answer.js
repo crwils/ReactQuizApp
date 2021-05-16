@@ -1,5 +1,3 @@
-import { getNodeText } from "@testing-library/dom";
-
 
 
 const Answer = ({ correctResult, wrongResult, nextQuestion }) => {

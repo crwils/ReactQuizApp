@@ -3,16 +3,15 @@
 const Question = ({ question, result }) => {
 
     const answer = question.correct_answer
-
-    const handleButtonClick = function (event) {
-
+    
+    const handleButtonClick = function (event, counter) {
         const userChoice = event.target.value
             
-            if (userChoice === answer) {
-                result(true)
-            } else {
-                result(false)
-            }
+        if (userChoice === answer) {
+            result(true)
+        } else {
+            result(false) // figure out where result is coming from 
+        }
     }
     
     return (
@@ -27,5 +26,6 @@ const Question = ({ question, result }) => {
     )
 }
 
-
 export default Question;
+
+// how can I change this so user can't repeatedly click true or false to alter score before refreshing the question

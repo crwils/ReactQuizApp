@@ -7,10 +7,12 @@ const QuizBox = () => {
     const [allQuestions, setAllQuestions] = useState([]);
     const [correctResult, setCorrectResult] = useState(false);
     const [wrongResult, setWrongResult] = useState(false);
+    const [correctScore, setCorrectScore] = useState(0);
+    const [incorrectScore, setIncorrectScore] = useState(0);
 
-    const newQuestion = useEffect(() => {
-                            getQuestionData();
-                        }, []);
+    useEffect(() => {
+        getQuestionData();
+    }, []);
 
     const getQuestionData = () => { 
     fetch('https://opentdb.com/api.php?amount=10&type=boolean')
@@ -22,21 +24,34 @@ const QuizBox = () => {
         if (value === true) {
             setCorrectResult(true)
             setWrongResult(null)
+            addToCorrectScore()
         } else {
             setWrongResult(true)
             setCorrectResult(null)
+            addToIncorrectScore()
         }
     };
 
-    const nextQuestionClick = () => {
-        window.location.reload();
+    const addToCorrectScore = () => {
+        setCorrectScore(correctScore+1)
+    }
+    const addToIncorrectScore = () => {
+        setIncorrectScore(incorrectScore+1)
     }
 
 
+    const nextQuestionClick = () => { 
+        getQuestionData()
+        setWrongResult(null)
+        setCorrectResult(null)
+    }
+
     return (
         <>
-            <u><h1>The Neverending Quiz!</h1></u>
-            <Question question={allQuestions} result={handleUserAnswer} getQuestion={getQuestionData} newQuestion={newQuestion}/>
+            <u><h1>QUIZ</h1></u>
+            <Question question={allQuestions} result={handleUserAnswer} getQuestion={getQuestionData} />
+            <b>Correct: {correctScore}</b> <br/>
+            <b>Incorrect: {incorrectScore}</b>
             <Answer correctResult={correctResult} wrongResult={wrongResult} nextQuestion={nextQuestionClick}/>
         </>
     )
