@@ -4,7 +4,6 @@ const Answer = ({ correctResult, wrongResult, nextQuestion }) => {
 
     return (
         <>
-            
             <div>
                 <hr />
                 <div className="buttons">
