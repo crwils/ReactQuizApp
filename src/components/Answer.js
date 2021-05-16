@@ -2,14 +2,20 @@ import { getNodeText } from "@testing-library/dom";
 
 
 
-const Answer = ({ correctResult, wrongResult, nextQuestion}) => {
+const Answer = ({ correctResult, wrongResult, nextQuestion }) => {
 
     return (
         <>
-            {correctResult ? <p> Correct! </p> : null}
-            {wrongResult ? <p> Wrong! </p> : null}
-            {correctResult || wrongResult ?
-            <button onClick={nextQuestion}> Next Question </button> : null}
+            
+            <div>
+                <hr />
+                <div className="buttons">
+                    {correctResult ? <p><b> Correct Answer! </b></p> : null}
+                    {wrongResult ? <p><b> Wrong Answer! </b></p> : null}
+                </div>
+                {correctResult || wrongResult ?
+                    <button onClick={nextQuestion}> Next Question </button> : null}
+            </div>
         </>
     )
 }

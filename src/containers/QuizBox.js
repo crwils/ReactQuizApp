@@ -35,7 +35,7 @@ const QuizBox = () => {
 
     return (
         <>
-            <h1>Quiz App!</h1>
+            <u><h1>The Neverending Quiz!</h1></u>
             <Question question={allQuestions} result={handleUserAnswer} getQuestion={getQuestionData} newQuestion={newQuestion}/>
             <Answer correctResult={correctResult} wrongResult={wrongResult} nextQuestion={nextQuestionClick}/>
         </>

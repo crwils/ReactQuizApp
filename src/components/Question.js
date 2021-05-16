@@ -1,4 +1,3 @@
-import allQuestions from '../containers/QuizBox'
 
 
 const Question = ({ question, result }) => {
@@ -19,7 +18,7 @@ const Question = ({ question, result }) => {
     return (
         <>
             <p>{question.question}</p>
-            <div>
+            <div className="buttons">
                 <button value="True" onClick={handleButtonClick}>True</button>
                 <button value="False" onClick={handleButtonClick}>False</button>
             </div>
