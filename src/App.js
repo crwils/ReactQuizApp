@@ -1,8 +1,9 @@
 import './App.css';
+import QuizBox from '../src/containers/QuizBox'
 
 function App() {
   return (
-    <QuizContainer />
+    <QuizBox />
   );
 }
 
