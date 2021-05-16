@@ -5,28 +5,39 @@ import Answer from '../components/Answer';
 
 const QuizBox = () => {
     const [allQuestions, setAllQuestions] = useState([]);
-    const [result, setResult] = useState(false);
+    const [correctResult, setCorrectResult] = useState(false);
+    const [wrongResult, setWrongResult] = useState(false);
 
-    useEffect(() => {
-        getQuestionData();
-    }, []);
+    const newQuestion = useEffect(() => {
+                            getQuestionData();
+                        }, []);
 
-    const getQuestionData = function () { 
+    const getQuestionData = () => { 
     fetch('https://opentdb.com/api.php?amount=10&type=boolean')
         .then(response => response.json())
         .then(data => setAllQuestions(data.results[0]))
     };
 
     const handleUserAnswer = function (value) {
-        setResult(value)
+        if (value === true) {
+            setCorrectResult(true)
+            setWrongResult(null)
+        } else {
+            setWrongResult(true)
+            setCorrectResult(null)
+        }
     };
+
+    const nextQuestionClick = () => {
+        window.location.reload();
+    }
 
 
     return (
         <>
             <h1>Quiz App!</h1>
-            <Question question={allQuestions} userAnswer={handleUserAnswer} getQuestion={getQuestionData}/>
-            {result ? <Answer question={allQuestions} revealResult={result}/> : null}
+            <Question question={allQuestions} result={handleUserAnswer} getQuestion={getQuestionData} newQuestion={newQuestion}/>
+            <Answer correctResult={correctResult} wrongResult={wrongResult} nextQuestion={nextQuestionClick}/>
         </>
     )
 }
