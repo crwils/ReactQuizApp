@@ -40,13 +40,6 @@ const QuizBox = () => {
         }
     }
 
-    // const addToCorrectScore = () => {
-    //     setCorrectScore(correctScore+1)
-    // }
-    // const addToIncorrectScore = () => {
-    //     setIncorrectScore(incorrectScore+1)
-    // }
-
     const nextQuestionClick = () => { 
         getQuestionData()
         setWrongResult(null)
@@ -56,7 +49,7 @@ const QuizBox = () => {
     return (
         <>
             <u><h1>QUIZ</h1></u>
-            <Question question={allQuestions} result={handleUserAnswer} getQuestion={getQuestionData} />
+            <Question question={allQuestions} result={handleUserAnswer} />
             <b>Correct: {correctScore}</b> <br/>
             <b>Incorrect: {incorrectScore}</b>
             <Answer correctResult={correctResult} wrongResult={wrongResult} nextQuestion={nextQuestionClick}/>
