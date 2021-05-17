@@ -27,5 +27,3 @@ const Question = ({ question, result }) => {
 // string replace: .replace(/&quot;|&#039;/g, "'")
 
 export default Question;
-
-// how can I change this so user can't repeatedly click true or false to alter score before refreshing the question

@@ -24,20 +24,28 @@ const QuizBox = () => {
         if (value === true) {
             setCorrectResult(true)
             setWrongResult(null)
-            addToCorrectScore()
+            addToScore(correctScore)
         } else {
             setWrongResult(true)
             setCorrectResult(null)
-            addToIncorrectScore()
+            addToScore(incorrectScore)
         }
     };
 
-    const addToCorrectScore = () => {
-        setCorrectScore(correctScore+1)
+    const addToScore = (value) => {
+        if (value === correctScore) {
+            setCorrectScore(correctScore+1) 
+        } else {
+            setIncorrectScore(incorrectScore+1)
+        }
     }
-    const addToIncorrectScore = () => {
-        setIncorrectScore(incorrectScore+1)
-    }
+
+    // const addToCorrectScore = () => {
+    //     setCorrectScore(correctScore+1)
+    // }
+    // const addToIncorrectScore = () => {
+    //     setIncorrectScore(incorrectScore+1)
+    // }
 
     const nextQuestionClick = () => { 
         getQuestionData()
