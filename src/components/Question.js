@@ -4,7 +4,7 @@ const Question = ({ question, result }) => {
 
     const answer = question.correct_answer
     
-    const handleButtonClick = function (event, counter) {
+    const handleButtonClick = function (event) {
         const userChoice = event.target.value
             
         if (userChoice === answer) {
@@ -22,9 +22,9 @@ const Question = ({ question, result }) => {
                 <button value="False" onClick={handleButtonClick}>False</button>
             </div>
         </>
-
     )
 }
+// string replace: .replace(/&quot;|&#039;/g, "'")
 
 export default Question;
 
